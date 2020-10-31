@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-plugin-quick-micro",
-  "version": "1.0.0",
+  "version": "0.0.1-alpha",
   "description": "Quickly use qiankun's vue-cli plugin.",
   "main": "index.js",
   "scripts": {
@@ -19,5 +19,6 @@
   "bugs": {
     "url": "https://github.com/jacycode/vue-cli-plugin-quick-micro/issues"
   },
-  "homepage": "https://github.com/jacycode/vue-cli-plugin-quick-micro#readme"
+  "homepage": "https://github.com/jacycode/vue-cli-plugin-quick-micro#readme",
+  "private": false
 }

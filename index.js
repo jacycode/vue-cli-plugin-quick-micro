@@ -8,25 +8,33 @@ module.exports = (api) => {
    * Modify webpack config
    */
   api.chainWebpack((config) => {
-    config.devServer
-      .headers({
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-        'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
-      })
-
-    config.output
-      .library(`${name}-[name]`)
-      .libraryTarget('umd')
-      .jsonpFunction(`webpackJsonp_${name}`)
 
     if (quickMicro.type === 'sub') {
+      
       /**
-       * fonts/icon 
+       * webpack: dev config
+       */
+      config.devServer
+        .headers({
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+          'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
+        })
+
+      /**
+       * webpack: output
+       */
+      config.output
+        .library(`${name}-[name]`)
+        .libraryTarget('umd')
+        .jsonpFunction(`webpackJsonp_${name}`)
+
+      /**
+       * webpack: fonts/icon 
        *  <4kb,base64;
        *  >=4kb,CDN
        */
-      let publicPath = quickMicro[process.env.NODE_ENV]
+      let publicPath = quickMicro['cdnUrl'][process.env.NODE_ENV]
       config.module
         .rule('fonts')
         .use('url-loader')
